@@ -60,5 +60,20 @@ public class FileOperation {
     public static int getNumberOfVertices() {
         return numberOfVertices;
     }
-    
+
+    public static void writeToFile(int[] verticesColor) {
+        File file = new File(outputPath);
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (int i = 0; i < verticesColor.length; i++) {
+                bufferedWriter.write((i + 1) + "  " + verticesColor[i] + '\n');
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
